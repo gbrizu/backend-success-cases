@@ -5,12 +5,7 @@ const SuccessCaseService = require('../services/successCaseService.js');
 // Si está vacío realiza un GetAll.
 async function getByFilter(req, res) {
   try {
-    console.log(req.body);
-    const {client, industry, projectType, startDate, finishDate, contact} = req.body;
-    
-    const cases = await SuccessCaseService.getByFilter({
-      client, industry, projectType, startDate, finishDate, contact
-    }); 
+    const cases = await SuccessCaseService.getByFilter(req.body); 
 
     if (cases.length > 0) {
       return res.status(200).json(cases);
