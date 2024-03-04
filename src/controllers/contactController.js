@@ -3,7 +3,6 @@ const ContactService = require("../services/contactService");
 // Controlador para obtener todos los contactos
 async function findAllContacts(req, res) {
   try {
-    console.log("-----------")
     const contacts = await ContactService.getAllContacts();
     if (contacts.length > 0) {
         return res.status(200).json(contacts);

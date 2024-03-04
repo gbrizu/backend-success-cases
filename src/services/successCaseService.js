@@ -88,7 +88,7 @@ async function getAll() {
         },
         {
           model: CaseDetailsModel,
-          required: false,
+          required: true,
         },
         {
           model: TechnologiesModel,
@@ -96,11 +96,11 @@ async function getAll() {
         },
         {
           model: ImprovementsModel,
-          required: false,
+          required: true,
         },
         {
           model: ChallengesModel,
-          required: false,
+          required: true,
         }
       ]
     });
@@ -115,49 +115,83 @@ async function getAll() {
 
 async function getByFilter(data) {
   try {
-    const {client, industry, projectType, startDate, finishDate, contact} = data;
+    const {clientid, industryid, projecttypeid, startdate, finishdate, contactid} = data;
 
     // Plantilla del Where a utilizar en el query.
     const whereFilter = {
-      client_id: {
-        [Op.eq]: client,
+      clientid: {
+        [Op.eq]: clientid,
       },
-      industry_id: {
-        [Op.eq]: industry,
+      industryid: {
+        [Op.eq]: industryid,
       },
-      projectType_id: {
-        [Op.eq]: projectType,
+      projecttypeid: {
+        [Op.eq]: projecttypeid,
       },
-      startDate: {
-        [Op.gt]: startDate,
+      startdate: {
+        [Op.gte]: startdate,
       },
-      finishDate: {
-        [Op.lt]: finishDate,
+      finishdate: {
+        [Op.lte]: finishdate,
       },
-      contact_id: {
-        [Op.eq]: contact,
+      contactid: {
+        [Op.eq]: contactid,
       },
     };
 
     // Chequeo de las variables del filtro. Esto es porque Sequelize las compararía buscando un Null.
-    if (client == null) { delete whereFilter.client_id };
-    if (industry == null) { delete whereFilter.industry_id };
-    if (projectType == null) { delete whereFilter.projectType_id };
-    if (startDate == null) { delete whereFilter.startDate };
-    if (finishDate == null) { delete whereFilter.finishDate };
-    if (contact == null) { delete whereFilter.contact_id };
+    if (clientid == null) { delete whereFilter.clientid };
+    if (industryid == null) { delete whereFilter.industryid };
+    if (projecttypeid == null) { delete whereFilter.projecttypeid };
+    if (startdate == null) { delete whereFilter.startdate };
+    if (finishdate == null) { delete whereFilter.finishdate };
+    if (contactid == null) { delete whereFilter.contactid };
     
     // Query a la BD con los filtros.
     const cases = SuccessCaseModel.findAll({
       where: {...whereFilter},
-      include: {
-        model: IndustryModel,
-        required: true,
-      }
+      include: [
+        {
+          model: IndustryModel,
+          required: true,
+        },
+        {
+          model: ProjectTypeModel,
+          required: true,
+        },
+        {
+          model: ClientModel,
+          required: true,
+        },
+        {
+          model: ContactModel,
+          required: true,
+        },
+        {
+          model: OfferingModel,
+          required: false,
+        },
+        {
+          model: CaseDetailsModel,
+          required: true,
+        },
+        {
+          model: TechnologiesModel,
+          required: true,
+        },
+        {
+          model: ImprovementsModel,
+          required: true,
+        },
+        {
+          model: ChallengesModel,
+          required: true,
+        }
+      ]
     });
     return cases;
   } catch (error) {
-    throw new Error(error);
+    throw new Error('Error al obtener los casos de éxito filtrados.');
   };
 };
 
