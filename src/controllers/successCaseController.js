@@ -36,7 +36,6 @@ async function getAll(req, res) {
 // Controller para obtener un caso por Id.
 async function getById(req, res) {
   try {
-    console.log(req.body);
     const {id} = req.body;
     if (id == null || id < 1) {
       return res.status(400).json({ message: 'El valor ingresado es erróneo o inexistente.' });
