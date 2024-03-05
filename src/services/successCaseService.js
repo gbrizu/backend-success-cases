@@ -108,9 +108,6 @@ async function getAll() {
   }
 }
 
-
-
-
 async function getByFilter(data) {
   try {
     const {clientid, industryid, projecttypeid, startdate, finishdate, contactid} = data;
@@ -146,7 +143,7 @@ async function getByFilter(data) {
     if (contactid == null) { delete whereFilter.contactid };
     
     // Query a la BD con los filtros.
-    const cases = SuccessCaseModel.findAll({
+    const cases = await SuccessCaseModel.findAll({
       where: {...whereFilter},
       include: [
         {
@@ -193,8 +190,61 @@ async function getByFilter(data) {
   };
 };
 
+async function getById(successCaseId) {
+  try {
+    
+    // Query a la BD con los filtros.
+    const successCase = await SuccessCaseModel.findByPk(successCaseId, {
+      include: [
+        {
+          model: IndustryModel,
+          required: true,
+        },
+        {
+          model: ProjectTypeModel,
+          required: true,
+        },
+        {
+          model: ClientModel,
+          required: true,
+        },
+        {
+          model: ContactModel,
+          required: true,
+        },
+        {
+          model: OfferingModel,
+          required: false,
+        },
+        {
+          model: CaseDetailsModel,
+          required: true,
+        },
+        {
+          model: TechnologiesModel,
+          required: true,
+        },
+        {
+          model: ImprovementsModel,
+          required: true,
+        },
+        {
+          model: ChallengesModel,
+          required: true,
+        }
+      ]
+    });
+    return successCase;
+  } catch (error) {
+    throw new Error('Error al obtener el caso de éxito por Id.');
+  };
+};
+
+
+
 module.exports = {
   getByFilter,
   createSuccessCase,
-  getAll
+  getAll,
+  getById,
 };
