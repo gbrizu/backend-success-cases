@@ -7,13 +7,13 @@ ImprovementsModel.init(
   {
     // Atributos del Mejoramiento (El id está dado por Postgre)
     image_imp: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     video_imp: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     text_imp: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
   },
   {

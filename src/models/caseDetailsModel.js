@@ -8,13 +8,13 @@ CaseDetailsModel.init(
   {
     
     image_detail: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     video_detail: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     text_detail: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     } 
   },
   {

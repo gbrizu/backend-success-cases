@@ -7,13 +7,13 @@ ChallengesModel.init(
   {
     // Atributos del Desafío (El id está dado por Postgre)
     image_ch: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     video_ch: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     text_ch: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
   },
   {

@@ -7,13 +7,13 @@ TechnologiesModel.init(
   {
     // Atributos de las tecnologías (El id está dado por Postgre)
     image_tech: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     video_tech: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     text_tech: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
   },
   {

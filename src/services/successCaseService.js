@@ -47,9 +47,7 @@ async function createSuccessCase(data) {
     const { image_imp, video_imp, text_imp} = improvement;
     const improvements = await ImprovementsModel.create({image_imp, video_imp, text_imp});
     const improvementid = improvements.dataValues.id;
-    
-     
-    
+
  
     // Crea el caso de éxito en la base de datos utilizando el modelo
     const newSuccessCase = await SuccessCaseModel.create({

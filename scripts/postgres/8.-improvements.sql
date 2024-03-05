@@ -1,7 +1,7 @@
 CREATE TABLE improvement (
   id SERIAL PRIMARY KEY,
-  image_imp VARCHAR(255),
-  video_imp VARCHAR(255),
+  image_imp TEXT,
+  video_imp TEXT,
   text_imp TEXT
 );
  

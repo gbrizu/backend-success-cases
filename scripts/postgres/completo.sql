@@ -80,30 +80,30 @@ VALUES
 
 CREATE TABLE case_detail (
   id SERIAL PRIMARY KEY,
-  image_detail VARCHAR(255),
-  video_detail VARCHAR(255),
+  image_detail TEXT,
+  video_detail TEXT,
   text_detail TEXT
 );
 
 CREATE TABLE technology (
   id SERIAL PRIMARY KEY,
-  image_tech VARCHAR(255),
-  video_tech VARCHAR(255),
+  image_tech TEXT,
+  video_tech TEXT,
   text_tech TEXT
 );
 
 CREATE TABLE improvement (
   id SERIAL PRIMARY KEY,
-  image_imp VARCHAR(255),
-  video_imp VARCHAR(255),
+  image_imp TEXT,
+  video_imp TEXT,
   text_imp TEXT
 );
  
 
  CREATE TABLE challenge (
   id SERIAL PRIMARY KEY,
-  image_ch VARCHAR(255),
-  video_ch VARCHAR(255),
+  image_ch TEXT,
+  video_ch TEXT,
   text_ch TEXT
 );
 
