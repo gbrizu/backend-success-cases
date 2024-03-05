@@ -2,7 +2,7 @@
 const { Sequelize } = require('sequelize');
 
 // Configura los datos de conexión a la base de datos PostgreSQL
-const sequelize = new Sequelize('postgres', 'postgres', '1615', {
+const sequelize = new Sequelize('postgres', 'postgres', 'admin', {
   host: 'localhost', // Cambia esto si tu base de datos está en un servidor remoto
   port: '5432', // Cambia esto si tu base de datos utiliza otro puerto
   dialect: 'postgres', // Indica que estamos utilizando PostgreSQL
