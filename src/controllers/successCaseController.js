@@ -5,7 +5,11 @@ const SuccessCaseService = require('../services/successCaseService.js');
 // Si está vacío realiza un GetAll.
 async function getByFilter(req, res) {
   try {
-    const cases = await SuccessCaseService.getByFilter(req.body); 
+    
+    const filters = req.body;
+
+
+    const cases = await SuccessCaseService.getByFilter(filters); 
 
     if (cases.length > 0) {
       return res.status(200).json(cases);
@@ -36,7 +40,7 @@ async function getAll(req, res) {
 // Controller para obtener un caso por Id.
 async function getById(req, res) {
   try {
-    const {id} = req.body;
+    const id = req.params.id;
     if (id == null || id < 1) {
       return res.status(400).json({ message: 'El valor ingresado es erróneo o inexistente.' });
     };

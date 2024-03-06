@@ -15,9 +15,6 @@ const  ChallengesModel = require('../models/challengesModel.js');
 async function createSuccessCase(data) {
   
   try {
-    if (!data || typeof data !== 'object') {
-      throw new Error('Se esperaba un objeto con los datos del caso de éxito.');
-    }    
  
     const { title, startdate, finishdate, teamsize, ispublic, industryid, clientid, projecttypeid, contactid , offeringid, casedetail, technology, 
       challenge, improvement} = data;
