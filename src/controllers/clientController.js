@@ -36,6 +36,10 @@ async function createClient(req, res) {
     try {
       
       const {name, surname, email } = req.body;
+
+      if (!name || !surname || !email) {
+        return res.status(400).json({ message: 'Faltan datos obligatorios' });
+      }
   
       // Llama al servicio para crear el cliente
       const newClient = await ClientService.createClient({
