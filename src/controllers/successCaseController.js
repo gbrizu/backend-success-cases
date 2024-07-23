@@ -57,6 +57,25 @@ async function getById(req, res) {
   };
 };
 
+async function deleteById(req, res) {
+  try {
+    const id = req.params.id;
+    if (id == null || id < 1) {
+      return res.status(400).json({ message: 'El valor ingresado es erróneo o inexistente.' });
+    };
+
+    const result = await SuccessCaseService.deleteById(id);
+
+    if (result == 1){
+      return res.status(200).json({ message: 'El caso se ha eliminado correctamente.' });
+    } else {
+      return res.status(400).json({ message: 'No ha sido posible eliminar el caso.' });
+    }
+  } catch (error) {
+    return res.status(500).json({ message: 'Error al obtener los casos de éxito.', error: error.message });
+  };
+};
+
 
 // Controller para crear un caso
 async function create(req, res) {
@@ -80,5 +99,6 @@ module.exports = {
   getByFilter,
   getById,
   create,
-  getAll
+  getAll,
+  deleteById
 };
