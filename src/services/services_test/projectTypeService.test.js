@@ -1,5 +1,5 @@
 const projectTypeService = require('../projectTypeService');
-const ProjectTypeModel = require('../../models/projectTypeModel');
+const ProjectTypeModel = require('../models/projectTypeModel');
 
 describe('projectTypeService', () => {
     // Verifica que getAllProjectType devuelva todos los tipos de proyectos.

@@ -1,7 +1,7 @@
 //import { getAllContacts, getContactById } from '../contactService.js';
 //import ContactModel from '../../models/contactModel';
 const contactService = require('../contactService.js');
-const ContactModel = require('../../models/contactModel');
+const ContactModel = require('../../models/contactModel.js');
 
 describe('contactService', () => {
     // Verifica que getAllContacts devuelva todos los contactos.

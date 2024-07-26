@@ -24,7 +24,7 @@ async function getByIdClient(clientId) {
     
     return getClient;
   } catch (error) {
-    throw new Error('Error al obtener el cliente con id ' + clientId + ' desde la base de datos');
+    throw new Error('Client not found');
   }
 }
 
