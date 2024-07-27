@@ -4,7 +4,7 @@ const ClientModel = require('../models/clientModel.js');
 // Servicio para crear un cliente
 async function createClient(data) {
   try {
-    const { name, surname, email} = data;
+    const { name, surname, email } = data;
 
     // Crea el cliente en la base de datos utilizando el modelo
     const newClient = await ClientModel.create({
@@ -20,8 +20,10 @@ async function createClient(data) {
 // Servicio para obtener un cliente por su id
 async function getByIdClient(clientId) {
   try {
-    const getClient = await ClientModel.findByPk(clientId); 
-    
+    const getClient = await ClientModel.findByPk(clientId);
+    if (!getClient) {
+      throw new Error('Client not found');
+    }
     return getClient;
   } catch (error) {
     throw new Error('Client not found');
@@ -30,15 +32,15 @@ async function getByIdClient(clientId) {
 
 // Servicio para obtener todos los clientes
 async function getAllClients() {
-    try {
-      const allClients = await ClientModel.findAll({
-        order: [['name', 'ASC']], // Ordena por la columna 'id' de manera ascendente (de menor a mayor)
-      });
-      return allClients;
-    } catch (error) {
-      throw new Error('Error al obtener todos los clientes desde la base de datos');
-    }
+  try {
+    const allClients = await ClientModel.findAll({
+      order: [['name', 'ASC']], // Ordena por la columna 'id' de manera ascendente (de menor a mayor)
+    });
+    return allClients;
+  } catch (error) {
+    throw new Error('Error al obtener todos los clientes desde la base de datos');
   }
+}
 
 
 module.exports = {
