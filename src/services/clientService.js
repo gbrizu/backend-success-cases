@@ -13,7 +13,7 @@ async function createClient(data) {
 
     return newClient;
   } catch (error) {
-    throw error;
+    throw new Error('Error al crear el cliente con nombre ' + data.name + ' en la base de datos');
   }
 }
 
