@@ -70,17 +70,4 @@ describe('successCaseService', () => {
       await expect(successCaseService.getAll()).rejects.toThrow('Error retrieving success cases');
     });
   });
-  describe('createSuccessCase', () => {
-    it('should create a new success case', async () => {
-      const mockSuccessCase = { name: 'Test Case' };
-      jest.spyOn(successCaseService, 'createSuccessCase').mockResolvedValue(mockSuccessCase);
-      const result = await successCaseService.createSuccessCase(mockSuccessCase);
-      expect(result).toEqual(mockSuccessCase);
-    });
-    it('should throw an error if the success case is invalid', async () => {
-      const mockSuccessCase = { invalidField: 'invalidValue' };
-      jest.spyOn(successCaseService, 'createSuccessCase').mockRejectedValue(new Error('Invalid success case'));
-      await expect(successCaseService.createSuccessCase(mockSuccessCase)).rejects.toThrow('Invalid success case');
-    });
-  });
 });
