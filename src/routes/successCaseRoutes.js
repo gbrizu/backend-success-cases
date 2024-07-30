@@ -19,5 +19,7 @@ router.get('/successCase/getAll', SuccessCaseController.getAll);
 
 router.delete('/successCase/deleteById/:id', SuccessCaseController.deleteById);
 
+router.put('/successCase/updateById/:id', SuccessCaseController.updateById);
+
 
 module.exports = router;

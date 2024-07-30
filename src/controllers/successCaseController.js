@@ -5,11 +5,11 @@ const SuccessCaseService = require('../services/successCaseService.js');
 // Si está vacío realiza un GetAll.
 async function getByFilter(req, res) {
   try {
-    
+
     const filters = req.body;
 
 
-    const cases = await SuccessCaseService.getByFilter(filters); 
+    const cases = await SuccessCaseService.getByFilter(filters);
 
     if (cases.length > 0) {
       return res.status(200).json(cases);
@@ -23,8 +23,8 @@ async function getByFilter(req, res) {
 
 async function getAll(req, res) {
   try {
-    
-    const cases = await SuccessCaseService.getAll(); 
+
+    const cases = await SuccessCaseService.getAll();
 
     if (cases.length > 0) {
       return res.status(200).json(cases);
@@ -66,7 +66,7 @@ async function deleteById(req, res) {
 
     const result = await SuccessCaseService.deleteById(id);
 
-    if (result == 1){
+    if (result == 1) {
       return res.status(200).json({ message: 'El caso se ha eliminado correctamente.' });
     } else {
       return res.status(400).json({ message: 'No ha sido posible eliminar el caso.' });
@@ -80,12 +80,12 @@ async function deleteById(req, res) {
 // Controller para crear un caso
 async function create(req, res) {
   try {
-  
+
     // Llama al servicio para crear el newSuccess 
     const newSuccessCase = await SuccessCaseService.createSuccessCase(req.body);
-     
+
     if (newSuccessCase) {
-      return res.status(201).json({ message: 'El caso se ha creado correctamente.' });
+      return res.status(200).json({ message: 'El caso se ha creado correctamente.' });
     } else {
       return res.status(400).json({ message: 'No ha sido posible crear el caso.' });
     }
@@ -94,11 +94,27 @@ async function create(req, res) {
   }
 }
 
+async function updateById(req, res) {
+  try {
+
+    // Llama al servicio para crear el newSuccess 
+    const updatedSuccessCase = await SuccessCaseService.updateById(req.body);
+
+    if (updatedSuccessCase) {
+      return res.status(200).json({ message: 'El caso se ha actualizado correctamente.' });
+    } else {
+      return res.status(400).json({ message: 'No ha sido posible actualizar el caso.' });
+    }
+  } catch (error) {
+    return res.status(500).json({ message: 'Error al actualizar el caso de éxito.', error: error.message });
+  }
+}
 
 module.exports = {
   getByFilter,
   getById,
   create,
   getAll,
-  deleteById
+  deleteById,
+  updateById
 };
