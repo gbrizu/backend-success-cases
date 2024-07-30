@@ -3,7 +3,7 @@ const app = express(); // Crear un servidor express
 const morgan = require('morgan'); // Middleware para ver las peticiones que llegan al servidor
 const cors = require('cors'); // Middleware para permitir peticiones desde otros servidores
 
-//const { auth, requiredScopes } = require('express-oauth2-jwt-bearer');
+const { auth, requiredScopes } = require('express-oauth2-jwt-bearer');
 
 // Authorization middleware. When used, the Access Token must
 // exist and be verified against the Auth0 JSON Web Key Set.
@@ -24,7 +24,7 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(express.json({ limit: '50mb' }));
 
 // Verifica el JWT antes de dirigirse a las rutas.
-// app.use(checkJwt);
+app.use(checkJwt);
 
 //Routes
 app.use(require('./routes/clientRoutes.js'));
