@@ -5,10 +5,12 @@ const cors = require('cors'); // Middleware para permitir peticiones desde otros
 
 const { auth, requiredScopes } = require('express-oauth2-jwt-bearer');
 
+// Importa el .env para usarlo en auth0 y en checkJwt
+require('dotenv').config();
 
 const checkJwt = auth({
-  audience: 'https://challenge-3.us.auth0.com/api/v2/',
-  issuerBaseURL: `https://challenge-3.us.auth0.com/`,
+  audience: process.env.AUTH0_AUDIENCE,
+  issuerBaseURL: process.env.AUTH0_ISSUER_BASE_URL,
 });
 
 
