@@ -238,6 +238,22 @@ async function getById(successCaseId) {
   };
 };
 
+async function deleteById(successCaseId) {
+  try {
+    
+    // Query a la BD que borra el SuccessCase.
+    const result = await SuccessCaseModel.destroy({
+      where: {
+        id: successCaseId
+      }
+    });
+    return result;
+    
+  } catch (error) {
+    throw new Error('Error al obtener el caso de éxito por Id.');
+  };
+};
+
 
 
 module.exports = {
@@ -245,4 +261,5 @@ module.exports = {
   createSuccessCase,
   getAll,
   getById,
+  deleteById
 };

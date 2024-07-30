@@ -17,4 +17,7 @@ router.post('/successCase/create', SuccessCaseController.create);
 
 router.get('/successCase/getAll', SuccessCaseController.getAll);
 
+router.delete('/successCase/deleteById/:id', SuccessCaseController.deleteById);
+
+
 module.exports = router;
