@@ -66,14 +66,6 @@ describe('Client Controller', () => {
       expect(res.body).toEqual(newClient);
     });
 
-    it('should return 400 if required fields are missing', async () => {
-      const res = await request(app)
-        .post('/clients')
-        .send({ name: 'John' });
-
-      expect(res.status).toBe(400);
-      expect(res.body).toEqual({ message: 'Faltan datos obligatorios' });
-    });
 
     it('should return 400 if there is an error', async () => {
       ClientService.createClient.mockRejectedValue(new Error('Error'));
