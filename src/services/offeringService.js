@@ -1,5 +1,5 @@
 const { or } = require('sequelize');
-const OfferingModel = require('../models_test/offeringModel.js');
+const OfferingModel = require('../models/offeringModel.js');
 
 // Servicio para obtener una lista de todos los Offering
 

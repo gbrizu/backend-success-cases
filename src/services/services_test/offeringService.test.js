@@ -1,5 +1,5 @@
 const offeringService = require('../offeringService');
-const OfferingModel = require('../../models_test/offeringModel');
+const OfferingModel = require('../../models/offeringModel');
 
 describe('offeringService', () => {
     // Verifica que getAll devuelva todos los offerings.

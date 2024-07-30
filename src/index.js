@@ -7,10 +7,10 @@ const cors = require('cors'); // Middleware para permitir peticiones desde otros
 
 // Authorization middleware. When used, the Access Token must
 // exist and be verified against the Auth0 JSON Web Key Set.
-const checkJwt = auth({
+/* const checkJwt = auth({
   audience: 'http://localhost:3000',
   issuerBaseURL: `https://dev-0efequbnpda3f7au.us.auth0.com/`,
-});
+}); */
 
 
 //Configuraciones
