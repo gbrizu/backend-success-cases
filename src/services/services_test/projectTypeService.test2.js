@@ -1,4 +1,4 @@
-const projectTypeService = require('../projectTypeService');
+const projectTypeService = require('../projectTypeService.js');
 const ProjectTypeModel = require('../../models/projectTypeModel.js');
 describe('projectTypeService', () => {
     describe('getAllProjectType', () => {

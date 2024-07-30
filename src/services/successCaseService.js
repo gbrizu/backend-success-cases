@@ -1,15 +1,15 @@
 const { Op } = require('sequelize');
-const SuccessCaseModel = require('../models/successCaseModel.js');
-const  IndustryModel = require('../models/industryModel.js');
-const  ClientModel = require('../models/clientModel.js');
-const  ProjectTypeModel = require('../models/projectTypeModel.js');
-const  ContactModel = require('../models/contactModel.js');
-const  OfferingModel = require('../models/offeringModel.js');
-const  CaseDetailsModel = require('../models/caseDetailsModel.js');
+const SuccessCaseModel = require('../models_test/successCaseModel.js');
+const  IndustryModel = require('../models_test/industryModel.js');
+const  ClientModel = require('../models_test/clientModel.js');
+const  ProjectTypeModel = require('../models_test/projectTypeModel.js');
+const  ContactModel = require('../models_test/contactModel.js');
+const  OfferingModel = require('../models_test/offeringModel.js');
+const  CaseDetailsModel = require('../models_test/caseDetailsModel.js');
 
-const  TechnologiesModel = require('../models/technologiesModel.js');
-const  ImprovementsModel = require('../models/improvementsModel.js');
-const  ChallengesModel = require('../models/challengesModel.js');
+const  TechnologiesModel = require('../models_test/technologiesModel.js');
+const  ImprovementsModel = require('../models_test/improvementsModel.js');
+const  ChallengesModel = require('../models_test/challengesModel.js');
 
 // Servicio para crear un caso de éxito con una industria asociada 
 async function createSuccessCase(data) {

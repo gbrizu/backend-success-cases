@@ -1,5 +1,5 @@
 const clientService = require('../clientService');
-const clientModel = require('../../models/clientModel.js');
+const clientModel = require('../../models_test/clientModel.js');
 describe('clientService', () => {
     describe('getByIdClient', () => {
         it('should return the client for a given ID', async () => {

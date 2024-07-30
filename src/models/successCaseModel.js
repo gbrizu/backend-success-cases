@@ -1,6 +1,6 @@
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../config/database.js'); 
-const IndustryModel = require('./industryModel');
+const IndustryModel = require('./industryModel.js');
 const ClientModel = require('./clientModel.js');
 const ProjectTypeModel = require('./projectTypeModel.js');
 const ContactModel = require('./contactModel.js');

@@ -1,4 +1,4 @@
-const ClientModel = require('../models/clientModel.js');
+const ClientModel = require('../models_test/clientModel.js');
 // Servicio para crear un cliente
 async function createClient(data) {
   try {

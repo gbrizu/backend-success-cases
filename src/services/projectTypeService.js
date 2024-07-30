@@ -1,4 +1,4 @@
-const ProjectTypeModel = require('../models/projectTypeModel');
+const ProjectTypeModel = require('../models_test/projectTypeModel');
 
 // Servicio para obtener todos los tipos de proyectos
 async function getAllProjectType() {
