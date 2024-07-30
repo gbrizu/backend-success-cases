@@ -1,5 +1,5 @@
 const { or } = require('sequelize');
-const IndustryModel = require('../models_test/industryModel.js');
+const IndustryModel = require('../models/industryModel.js');
 
 async function getAll() {
     try {

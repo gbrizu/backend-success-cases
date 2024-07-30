@@ -1,6 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:'); // Usar una base de datos en memoria para pruebas
-const IndustryModel = require('./industryModel');
+const IndustryModel = require('../industryModel');
 
 // Definir el modelo IndustryModel para la base de datos en memoria
 IndustryModel.init(

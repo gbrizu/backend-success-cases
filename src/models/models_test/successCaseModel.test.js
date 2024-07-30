@@ -1,15 +1,15 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:'); // Usar una base de datos en memoria para pruebas
-const SuccessCaseModel = require('./successCaseModel');
-const IndustryModel = require('./industryModel');
-const ClientModel = require('./clientModel');
-const ProjectTypeModel = require('./projectTypeModel');
-const ContactModel = require('./contactModel');
-const CaseDetailsModel = require('./caseDetailsModel');
-const OfferingModel = require('./offeringModel');
-const TechnologiesModel = require('./technologiesModel');
-const ChallengesModel = require('./challengesModel');
-const ImprovementsModel = require('./improvementsModel');
+const SuccessCaseModel = require('../successCaseModel');
+const IndustryModel = require('../industryModel');
+const ClientModel = require('../clientModel');
+const ProjectTypeModel = require('../projectTypeModel');
+const ContactModel = require('../contactModel');
+const CaseDetailsModel = require('../caseDetailsModel');
+const OfferingModel = require('../offeringModel');
+const TechnologiesModel = require('../technologiesModel');
+const ChallengesModel = require('../challengesModel');
+const ImprovementsModel = require('../improvementsModel');
 
 // Definir los modelos para la base de datos en memoria
 IndustryModel.init({ name: DataTypes.STRING }, { sequelize, modelName: 'Industry' });

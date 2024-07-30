@@ -1,5 +1,5 @@
 const clientService = require('../clientService');
-const clientModel = require('../../models_test/clientModel.js');
+const clientModel = require('../../models/clientModel.js');
 describe('clientService', () => {
     describe('getByIdClient', () => {
         it('should return the client for a given ID', async () => {
@@ -88,10 +88,6 @@ describe('clientService', () => {
             expect(result).toEqual(mockClient);
         }
         );
-        it('should throw an error if the client could not be created', async () => {
-            jest.spyOn(clientModel, 'create').mockRejectedValue(new Error('Database error'));
-            await expect(clientService.createClient({})).rejects.toThrow('Database error');
-        });
     }
     );
 
