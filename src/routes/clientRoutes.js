@@ -2,6 +2,7 @@ const { Router } = require('express');
 const router = Router();
 
 
+// Importar el controlador de cliente
 const ClientController = require('../controllers/clientController');
 
 // Ruta para obtener un cliente por su ID

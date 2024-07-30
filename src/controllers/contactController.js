@@ -17,6 +17,9 @@ async function findAllContacts(req, res) {
 // Controlador para obtener un contacto por su ID
 async function findByIdContact(req, res) {
   const contactId = req.params.contactId;
+  if (!contactId) {
+    return res.status(400).json({ message: "Falta el ID del contacto" });
+  }
 
   try {
     const contact = await ContactService.getContactById(contactId);
@@ -38,6 +41,16 @@ async function createContact(req, res) {
     const { name } = req.body;
     const { surName } = req.body;
     const { email } = req.body;
+
+    if (!name ) {
+      return res.status(400).json({ message: "Falta el nombre del contacto" });
+    }
+    if (!surName) {
+      return res.status(400).json({ message: "Falta el apellido del contacto" });
+    }
+    if (!email) {
+      return res.status(400).json({ message: "Falta el email del contacto" });
+    }
 
     const newContact = await ContactService.createContact({
       name,

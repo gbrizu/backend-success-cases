@@ -17,7 +17,12 @@ async function getAllClients(req, res) {
 
 // Controlador para obtener un cliente por su ID
 async function getByIdClient(req, res) {
+
   const clientId = req.params.clientId;
+
+  if (!clientId) {
+    return res.status(400).json({ message: 'Falta el ID del cliente' });
+  }
 
   try {
     const client = await ClientService.getByIdClient(clientId);
@@ -37,8 +42,14 @@ async function createClient(req, res) {
       
       const {name, surname, email } = req.body;
 
-      if (!name || !surname || !email) {
-        return res.status(400).json({ message: 'Faltan datos obligatorios' });
+      if ( !name ){
+        return res.status(400).json({ message: 'Falta el nombre del cliente.' });
+      }
+      if ( !surname ){
+        return res.status(400).json({ message: 'Falta el apellido del cliente.' });
+      }
+      if ( !email ){
+        return res.status(400).json({ message: 'Falta el email del cliente.' });
       }
   
       // Llama al servicio para crear el cliente
