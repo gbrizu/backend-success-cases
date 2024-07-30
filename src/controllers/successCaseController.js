@@ -5,11 +5,11 @@ const SuccessCaseService = require('../services/successCaseService.js');
 // Si está vacío realiza un GetAll.
 async function getByFilter(req, res) {
   try {
-    
+
     const filters = req.body;
 
 
-    const cases = await SuccessCaseService.getByFilter(filters); 
+    const cases = await SuccessCaseService.getByFilter(filters);
 
     if (cases.length > 0) {
       return res.status(200).json(cases);
@@ -23,8 +23,8 @@ async function getByFilter(req, res) {
 
 async function getAll(req, res) {
   try {
-    
-    const cases = await SuccessCaseService.getAll(); 
+
+    const cases = await SuccessCaseService.getAll();
 
     if (cases.length > 0) {
       return res.status(200).json(cases);
@@ -66,7 +66,7 @@ async function deleteById(req, res) {
 
     const result = await SuccessCaseService.deleteById(id);
 
-    if (result == 1){
+    if (result == 1) {
       return res.status(200).json({ message: 'El caso se ha eliminado correctamente.' });
     } else {
       return res.status(400).json({ message: 'No ha sido posible eliminar el caso.' });
@@ -80,58 +80,58 @@ async function deleteById(req, res) {
 // Controller para crear un caso
 async function create(req, res) {
   try {
-  
-    const { title, startdate, finishdate, teamsize, ispublic, industryid, clientid, projecttypeid, contactid , offeringid, casedetail, technology, 
-      challenge, improvement} = req.body;
 
-    if ( !title ){
+    const { title, startdate, finishdate, teamsize, ispublic, industryid, clientid, projecttypeid, contactid, offeringid, casedetail, technology,
+      challenge, improvement } = req.body;
+
+    if (!title) {
       return res.status(400).json({ message: 'Falta el título del caso.' });
     }
-    if ( !startdate ){
+    if (!startdate) {
       return res.status(400).json({ message: 'Falta la fecha de inicio del caso.' });
     }
-    if ( !finishdate ){
+    if (!finishdate) {
       return res.status(400).json({ message: 'Falta la fecha de finalización del caso.' });
     }
-    if ( !teamsize ){
+    if (!teamsize) {
       return res.status(400).json({ message: 'Falta el tamaño del equipo del caso.' });
     }
-    if ( !ispublic ){
+    if (!ispublic) {
       return res.status(400).json({ message: 'Falta el estado de publicación del caso.' });
     }
-    if ( !industryid ){
+    if (!industryid) {
       return res.status(400).json({ message: 'Falta la industria del caso.' });
     }
-    if ( !clientid ){
+    if (!clientid) {
       return res.status(400).json({ message: 'Falta el cliente del caso.' });
     }
-    if ( !projecttypeid ){
+    if (!projecttypeid) {
       return res.status(400).json({ message: 'Falta el tipo de proyecto del caso.' });
     }
-    if ( !contactid ){
+    if (!contactid) {
       return res.status(400).json({ message: 'Falta el contacto del caso.' });
     }
-    if ( !offeringid ){
+    if (!offeringid) {
       return res.status(400).json({ message: 'Falta la oferta del caso.' });
     }
-    if ( !casedetail ){
+    if (!casedetail) {
       return res.status(400).json({ message: 'Falta el detalle del caso.' });
     }
-    if ( !technology ){
+    if (!technology) {
       return res.status(400).json({ message: 'Falta la tecnología del caso.' });
     }
-    if ( !challenge ){
+    if (!challenge) {
       return res.status(400).json({ message: 'Falta el desafío del caso.' });
     }
-    if ( !improvement ){
+    if (!improvement) {
       return res.status(400).json({ message: 'Falta la mejora del caso.' });
     }
-    
+
     // Llama al servicio para crear el newSuccess 
     const newSuccessCase = await SuccessCaseService.createSuccessCase(req.body);
-     
+
     if (newSuccessCase) {
-      return res.status(201).json({ message: 'El caso se ha creado correctamente.' });
+      return res.status(200).json({ message: 'El caso se ha creado correctamente.' });
     } else {
       return res.status(400).json({ message: 'No ha sido posible crear el caso.' });
     }
@@ -140,11 +140,30 @@ async function create(req, res) {
   }
 }
 
+async function updateById(req, res) {
+  try {
+
+    const successCaseId = req.params.id;
+    const data = req.body;
+
+    // Llama al servicio para actualizar el caso de éxito
+    const updatedSuccessCase = await SuccessCaseService.updateById(successCaseId, data);
+
+    if (updatedSuccessCase) {
+      return res.status(200).json({ message: 'El caso se ha actualizado correctamente.' });
+    } else {
+      return res.status(400).json({ message: 'No ha sido posible actualizar el caso.' });
+    }
+  } catch (error) {
+    return res.status(500).json({ message: 'Error al actualizar el caso de éxito.', error: error.message });
+  }
+}
 
 module.exports = {
   getByFilter,
   getById,
   create,
   getAll,
-  deleteById
+  deleteById,
+  updateById
 };

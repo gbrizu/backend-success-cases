@@ -5,12 +5,11 @@ const cors = require('cors'); // Middleware para permitir peticiones desde otros
 
 const { auth, requiredScopes } = require('express-oauth2-jwt-bearer');
 
-// Importa el .env para usarlo en auth0 y en checkJwt
-require('dotenv').config();
-
+// Authorization middleware. When used, the Access Token must
+// exist and be verified against the Auth0 JSON Web Key Set.
 const checkJwt = auth({
-  audience: process.env.AUTH0_AUDIENCE,
-  issuerBaseURL: process.env.AUTH0_ISSUER_BASE_URL,
+  audience: 'http://localhost:3000',
+  issuerBaseURL: `https://dev-0efequbnpda3f7au.us.auth0.com/`,
 });
 
 
@@ -21,8 +20,8 @@ app.set('json spaces', 2) // Configurar la cantidad de espacios en el formato JS
 //Middleware
 app.use(morgan('dev'));
 app.use(cors());
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
+app.use(express.json({ limit: '50mb' }));
 
 // Verifica el JWT antes de dirigirse a las rutas.
 app.use(checkJwt);

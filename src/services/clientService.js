@@ -53,6 +53,8 @@ async function getAllClients() {
     throw new Error('Error al obtener todos los clientes desde la base de datos');
   }
 }
+
+
 module.exports = {
   createClient,
   getByIdClient,
